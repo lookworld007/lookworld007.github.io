@@ -3,11 +3,11 @@
   <title>NetStack-网络技术栈</title>
   
   <subtitle>网络技术栈</subtitle>
-  <link href="https://lookworld007.github.io/atom.xml" rel="self"/>
+  <link href="https://blog.iwlookworld.dpdns.org/atom.xml" rel="self"/>
   
-  <link href="https://lookworld007.github.io/"/>
+  <link href="https://blog.iwlookworld.dpdns.org/"/>
   <updated>2025-12-14T07:24:07.348Z</updated>
-  <id>https://lookworld007.github.io/</id>
+  <id>https://blog.iwlookworld.dpdns.org/</id>
   
   <author>
     <name>zhaoxu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>[计算机网络]第一章 概述</title>
-    <link href="https://lookworld007.github.io/2025/12/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0/"/>
-    <id>https://lookworld007.github.io/2025/12/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0/</id>
+    <link href="https://blog.iwlookworld.dpdns.org/2025/12/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0/"/>
+    <id>https://blog.iwlookworld.dpdns.org/2025/12/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0/</id>
     <published>2025-12-14T07:20:48.000Z</published>
     <updated>2025-12-14T07:24:07.348Z</updated>
     
@@ -34,14 +34,14 @@
     
     
     
-    <category term="计算机网络" scheme="https://lookworld007.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <category term="计算机网络" scheme="https://blog.iwlookworld.dpdns.org/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://lookworld007.github.io/2025/12/14/hello-world/"/>
-    <id>https://lookworld007.github.io/2025/12/14/hello-world/</id>
+    <link href="https://blog.iwlookworld.dpdns.org/2025/12/14/hello-world/"/>
+    <id>https://blog.iwlookworld.dpdns.org/2025/12/14/hello-world/</id>
     <published>2025-12-14T05:52:53.822Z</published>
     <updated>2025-12-14T05:52:53.822Z</updated>
     
