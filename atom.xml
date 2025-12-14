@@ -6,7 +6,7 @@
   <link href="https://lookworld007.github.io/atom.xml" rel="self"/>
   
   <link href="https://lookworld007.github.io/"/>
-  <updated>2025-12-14T05:52:53.822Z</updated>
+  <updated>2025-12-14T07:24:07.348Z</updated>
   <id>https://lookworld007.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[计算机网络]第一章 概述</title>
+    <link href="https://lookworld007.github.io/2025/12/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0/"/>
+    <id>https://lookworld007.github.io/2025/12/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0/</id>
+    <published>2025-12-14T07:20:48.000Z</published>
+    <updated>2025-12-14T07:24:07.348Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、什么是计算机网络"><a href="#一、什么是计算机网络" class="headerlink" title="一、什么是计算机网络"></a>一、什么是计算机网络</h1><h1 id="二、传输介质"><a href="#二、传输介质" class="headerlink" title="二、传输介质"></a>二、传输介质</h1><p> 导引型介质<br>双绞线<br>光线<br>同轴电缆<br> 非导引型介质<br>无线<br>电波</p><h1 id="三、计算机网络的组成"><a href="#三、计算机网络的组成" class="headerlink" title="三、计算机网络的组成"></a>三、计算机网络的组成</h1><p> 边缘<br>端主机<br> 核心<br>网络设备</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;一、什么是计算机网络&quot;&gt;&lt;a href=&quot;#一、什么是计算机网络&quot; class=&quot;headerlink&quot; title=&quot;一、什么是计算机网络&quot;&gt;&lt;/a&gt;一、什么是计算机网络&lt;/h1&gt;&lt;h1 id=&quot;二、传输介质&quot;&gt;&lt;a href=&quot;#二、传输介质&quot; class=&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="计算机网络" scheme="https://lookworld007.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
