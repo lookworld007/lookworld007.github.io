@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【计算机网络】第2章 物理层 | NetStack-网络技术栈</title><meta name="author" content="zhaoxu"><meta name="copyright" content="zhaoxu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、物理层的基本概念（2.1）2.1.1 核心定义与任务（🔴 重点）● 定义：物理层位于OSI模型最底层，负责在传输媒体上传输原始比特流，屏蔽不同传输媒体的差异，为数据链路层提供统一接口。● 核心任务：确定与传输媒体接口的四大特性（必记）：  a. 机械特性：接口硬件的物理规范（如RJ45插头形状、引脚数、排列方式）；  b. 电气特性：接口电缆上的电压范围（如TTL电平：00.8V为0，25V">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【计算机网络】第2章 物理层">
+<meta property="og:url" content="https://blog.iwlookworld.dpdns.org/2025/12/15/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/index.html">
+<meta property="og:site_name" content="NetStack-网络技术栈">
+<meta property="og:description" content="一、物理层的基本概念（2.1）2.1.1 核心定义与任务（🔴 重点）● 定义：物理层位于OSI模型最底层，负责在传输媒体上传输原始比特流，屏蔽不同传输媒体的差异，为数据链路层提供统一接口。● 核心任务：确定与传输媒体接口的四大特性（必记）：  a. 机械特性：接口硬件的物理规范（如RJ45插头形状、引脚数、排列方式）；  b. 电气特性：接口电缆上的电压范围（如TTL电平：00.8V为0，25V">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.iwlookworld.dpdns.org/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-12-15T09:56:52.000Z">
+<meta property="article:modified_time" content="2025-12-15T09:59:07.512Z">
+<meta property="article:author" content="zhaoxu">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.iwlookworld.dpdns.org/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【计算机网络】第2章 物理层",
+  "url": "https://blog.iwlookworld.dpdns.org/2025/12/15/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/",
+  "image": "https://blog.iwlookworld.dpdns.org/img/butterfly-icon.png",
+  "datePublished": "2025-12-15T09:56:52.000Z",
+  "dateModified": "2025-12-15T09:59:07.512Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "zhaoxu",
+      "url": "https://blog.iwlookworld.dpdns.org"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog.iwlookworld.dpdns.org/2025/12/15/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【计算机网络】第2章 物理层',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="NetStack-网络技术栈" type="application/atom+xml">
+</head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">NetStack-网络技术栈</span></a><a class="nav-page-title" href="/"><span class="site-name">【计算机网络】第2章 物理层</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">【计算机网络】第2章 物理层</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-15T09:56:52.000Z" title="发表于 2025-12-15 17:56:52">2025-12-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-15T09:59:07.512Z" title="更新于 2025-12-15 17:59:07">2025-12-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>一、物理层的基本概念（2.1）<br>2.1.1 核心定义与任务（🔴 重点）<br>● 定义：物理层位于OSI模型最底层，负责在传输媒体上传输原始比特流，屏蔽不同传输媒体的差异，为数据链路层提供统一接口。<br>● 核心任务：确定与传输媒体接口的四大特性（必记）：<br>  a. 机械特性：接口硬件的物理规范（如RJ45插头形状、引脚数、排列方式）；<br>  b. 电气特性：接口电缆上的电压范围（如TTL电平：00.8V为0，25V为1；RS-232：±15V表示0&#x2F;1）；<br>  c. 功能特性：电压&#x2F;电流的含义（如某引脚高电平表示“数据发送”）；<br>  d. 过程特性：事件的先后顺序（如发送数据前先建立连接，发送后释放连接）。<br>🔵 易错点提醒：物理层≠传输媒体<br>● 物理层是“协议&#x2F;规程”（软件逻辑），传输媒体是“物理通路”（硬件介质，如双绞线、光纤），物理层的作用是屏蔽传输媒体的差异，而非直接控制媒体。</p>
+<p>二、数据通信的基础知识（2.2）<br>2.2.1 数据通信系统模型（🔴 重点）<br>● 三大部分：源系统（发送端）→ 传输系统（传输网络）→ 目的系统（接收端）；<br>● 关键组件：<br>  ○ 源点：产生原始数据（如计算机输入汉字）；<br>  ○ 发送器：将数据转换为信号（如调制解调器将数字信号转为模拟信号）；<br>  ○ 接收器：将信号还原为数据（如调制解调器将模拟信号转为数字信号）；<br>  ○ 终点：接收并处理数据（如计算机显示汉字）。<br>2.2.2 核心术语（🔴 重点）<br>术语	定义	举例<br>消息（message）	需传输的有效内容（如语音、文字、视频）	一封邮件、一段语音<br>数据（data）	消息的数字化表示（有意义的符号序列）	二进制比特流10100110<br>信号（signal）	数据的电气&#x2F;电磁表现形式	电压变化、光脉冲<br>码元（symbol）	数字信号的基本波形（离散数值的载体）	二进制码元（0&#x2F;1对应的波形）<br>● 信号分类：<br>  ○ 模拟信号：参数取值连续（如正弦波、传统电话信号）；<br>  ○ 数字信号：参数取值离散（如方波、计算机发送的比特流）。<br>2.2.3 信道相关概念（🔴 重点 + 🟡 难点）<br>（1）信道分类（按通信方向）<br>类型	定义	例子<br>单工通信	只能单向传输（无反向交互）	广播、电视信号传输<br>半双工通信	双向传输，但不能同时发送&#x2F;接收	对讲机、传统对讲机<br>全双工通信	双向同时传输	电话、以太网通信<br>（2）基带信号与调制<br>● 基带信号：来自信源的原始信号（含低频&#x2F;直流成分，如二进制比特流）；<br>● 调制分类：<br>  a. 基带调制（编码）：将数字信号转为另一种数字信号（如曼彻斯特编码）；<br>  b. 带通调制：用载波将基带信号搬移到高频段（如调幅、调频、调相），适配远距离传输。<br>（3）常用编码方式（🔴 重点 + 🔵 易错点）<br>编码方式	规则	优点	缺点	应用场景<br>不归零制（NRZ）	正电平&#x3D;1，负电平&#x3D;0（或反之）	简单，速率低	无自同步能力（需额外时钟）	早期串口通信<br>归零制（RZ）	正脉冲&#x3D;1，负脉冲&#x3D;0（脉冲后回归零电平）	有自同步能力	带宽利用率低	早期数字通信<br>曼彻斯特编码	位周期中心跳变：上跳&#x3D;0，下跳&#x3D;1（或反之）	自同步能力强，抗干扰	带宽利用率低（速率&#x3D;2倍基带）	以太网（10Mbit&#x2F;s）<br>差分曼彻斯特	位中心必跳变（同步），位开始跳变&#x3D;0，不跳变&#x3D;1	自同步能力强，抗干扰更强	实现复杂	令牌环网<br>🔵 易错点：曼彻斯特编码的“自同步能力”<br>● 不归零制无法从信号中提取时钟（需额外同步信号），而曼彻斯特编码每比特都有跳变，接收方可通过跳变同步时钟，无需额外时钟线。<br>（4）带通调制方法（🔴 重点）<br>● 核心目的：将基带信号（低频）搬移到高频段，适配无线&#x2F;远距离传输；<br>● 三种基本调制：<br>  a. 调幅（AM）：载波振幅随基带信号变化（0→低幅，1→高幅）；<br>  b. 调频（FM）：载波频率随基带信号变化（0→低频，1→高频）；<br>  c. 调相（PM）：载波相位随基带信号变化（0→0°，1→180°）；<br>● 进阶调制：正交振幅调制（QAM）：结合振幅和相位，提升速率（如16QAM&#x3D;4bit&#x2F;码元，64QAM&#x3D;6bit&#x2F;码元）。<br>2.2.4 信道的极限容量（🔴 重点 + 🟡 难点）<br>（1）奈氏准则（无噪声信道）<br>● 核心结论：在带宽为W（Hz）的低通信道中，码元传输的最高速率为 2W（码元&#x2F;秒）；<br>● 公式：码元最大速率 &#x3D; 2W（Baud）；<br>● 关键说明：<br>  ○ 仅限制“码元速率”，不限制“信息速率”（可通过多进制编码提升信息速率）；<br>  ○ 超过该速率会出现码间串扰（相邻码元波形重叠，无法识别）。<br>（2）香农公式（有噪声信道）<br>● 核心结论：信道的极限信息传输速率由带宽和信噪比决定；<br>● 公式：C &#x3D; W log₂(1 + S&#x2F;N)（bit&#x2F;s）；<br>  ○ W：信道带宽（Hz）；<br>  ○ S&#x2F;N：信噪比（信号平均功率&#x2F;噪声平均功率，无量纲）；<br>  ○ 信噪比（dB）&#x3D; 10 log₁₀(S&#x2F;N)（如S&#x2F;N&#x3D;1000→30dB）；<br>● 关键说明：<br>  ○ 香农极限是“绝对上限”，实际速率低于该值（受编码技术限制）；<br>  ○ 带宽和信噪比均可提升速率，但带宽提升成本更高，实际中常通过提高信噪比（如放大信号、降噪）优化。<br>🟡 难点解析：奈氏准则与香农公式的区别<br>对比维度	奈氏准则	香农公式<br>适用场景	无噪声信道	有噪声信道<br>限制因素	带宽（码元速率上限）	带宽+信噪比（信息速率上限）<br>优化方向	多进制编码（提升每码元比特数）	提高信噪比（放大信号&#x2F;降噪）<br>（3）例子计算（必练）<br>● 例1：带宽3kHz无噪声信道，求码元最大速率和信息速率（二进制编码）；<br>解：码元速率&#x3D;2×3k&#x3D;6k Baud；信息速率&#x3D;6k×1&#x3D;6k bit&#x2F;s；<br>● 例2：带宽3kHz信道，信噪比30dB，求极限信息速率；<br>解：S&#x2F;N&#x3D;10^(30&#x2F;10)&#x3D;1000；C&#x3D;3k×log₂(1+1000)≈3k×10&#x3D;30k bit&#x2F;s。<br>🔵 易错点：码元速率≠信息速率<br>● 码元速率（Baud）：单位时间传输的码元数；<br>● 信息速率（bit&#x2F;s）：单位时间传输的比特数；<br>● 关系：信息速率 &#x3D; 码元速率 × 每码元比特数（如4进制码元→2bit&#x2F;码元）。</p>
+<p>三、物理层下面的传输媒体（2.3）<br>2.3.1 传输媒体分类（🔴 重点）<br>● 导引型传输媒体：电磁波沿固体媒体传播（双绞线、同轴电缆、光纤）；<br>● 非导引型传输媒体：电磁波在自由空间传播（无线电波、微波、红外线、可见光）。<br>2.3.2 导引型传输媒体（🔴 重点 + 🔵 易错点）<br>（1）双绞线（TP）<br>● 结构：两根绝缘铜导线绞合（减少电磁干扰）；<br>● 分类：<br>  ○ 无屏蔽双绞线（UTP）：无屏蔽层，价格低，常用（如5类、超5类）；<br>  ○ 屏蔽双绞线（STP）：带铝箔&#x2F;金属编织屏蔽层，抗干扰强，需接地（如F&#x2F;UTP、U&#x2F;FTP）；<br>● 常用类别与应用：<br>类别	带宽	典型应用<br>3类	16MHz	电话、10Mbit&#x2F;s以太网<br>5类	100MHz	100Mbit&#x2F;s以太网（100BASE-T）<br>超5类	125MHz	1Gbit&#x2F;s以太网（1000BASE-T）<br>6类	250MHz	10Gbit&#x2F;s以太网（短距离）<br>● 优点：成本低、易安装；缺点：抗干扰弱、传输距离有限（100m内）。<br>（2）同轴电缆<br>● 结构：内导体（铜芯）→ 绝缘层→ 外导体（屏蔽层）→ 护套；<br>● 特点：抗干扰强（外导体屏蔽），带宽比双绞线高；<br>● 应用：早期有线电视（CATV）、基站回传（现已逐步被光纤替代）。<br>（3）光纤<br>● 结构：纤芯（高折射率石英玻璃）→ 包层（低折射率）→ 护套；<br>● 传输原理：光的全反射（光线从纤芯射向包层，入射角≥临界角时全反射，沿纤芯传输）；<br>● 分类与对比（🔵 易错点）：<br>类型	特点	优点	缺点	应用场景<br>多模光纤（MMF）	纤芯粗（50&#x2F;62.5μm），多束光线传输	成本低（光源为LED）	色散大（信号展宽），传输距离短（≤2km）	局域网骨干、短距离传输<br>单模光纤（SMF）	纤芯细（9μm），单束光线传输	色散小，传输距离长（≤100km）	成本高（光源为半导体激光器）	广域网骨干、长距离传输<br>● 优点：带宽极大（25000<del>30000GHz）、抗干扰强（无电磁干扰）、保密性好、传输损耗小；<br>● 常用波段：850nm（多模）、1300nm、1550nm（单模，损耗最小）。<br>2.3.3 非导引型传输媒体（🔴 重点）<br>（1）无线电波<br>● 频段：3kHz</del>300GHz，可绕射（穿透障碍物）；<br>● 应用：广播、电视、移动通信（2G&#x2F;3G&#x2F;4G&#x2F;5G）。<br>（2）微波<br>● 频段：300MHz~300GHz，直线传播（视距LOS）；<br>● 应用：微波接力通信（中继站）、卫星通信（同步卫星&#x2F;低轨卫星如星链）；<br>● 问题：多径效应（信号经障碍物反射后多路径到达接收端，导致失真）。<br>（3）红外线&#x2F;可见光<br>● 特点：定向传输，抗干扰强，无需频谱授权；<br>● 应用：红外遥控、室内可见光通信（Li-Fi）。<br>🔵 易错点：ISM频段<br>● 无需授权即可使用的频段（2.4GHz、5.8GHz），用于Wi-Fi、蓝牙、ZigBee等无线设备。</p>
+<p>四、信道复用技术（2.4）<br>2.4.1 复用的核心思想（🔴 重点）<br>● 多个用户共享一条物理信道，提高信道利用率（避免单用户占用信道导致空闲）；<br>● 关键组件：复用器（发送端合并信号）、分用器（接收端分离信号）。<br>2.4.2 常用复用技术（🔴 重点 + 🟡 难点）<br>（1）频分复用（FDM）<br>● 原理：将信道带宽划分为多个互不重叠的子频带，每个用户占用一个子频带；<br>● 特点：所有用户同时占用不同带宽，无需同步；<br>● 缺点：子频带间需留保护带（避免串扰），带宽利用率较低；<br>● 应用：传统无线电广播、有线电视（CATV）。<br>（2）时分复用（TDM）<br>● 原理：将时间划分为固定长度的TDM帧，每个用户占用固定序号的时隙；<br>● 特点：所有用户占用相同带宽，不同时间；<br>● 缺点：用户无数据时，时隙空闲（信道利用率低）；<br>● 应用：传统电话网（PCM系统）、TDMA移动通信（2G）。<br>（3）统计时分复用（STDM）<br>● 原理：动态分配时隙（按需分配），无数据用户不占用时隙；<br>● 特点：信道利用率高于TDM（解决时隙空闲问题）；<br>● 应用：计算机网络中的分组交换（如路由器转发分组）。<br>（4）波分复用（WDM）<br>● 原理：光的频分复用，将不同波长的光信号复用到一根光纤中；<br>● 分类：<br>  ○ 密集波分复用（DWDM）：波长间隔小（0.8nm），可复用数百个信道；<br>  ○ 粗波分复用（CWDM）：波长间隔大（20nm），复用信道少；<br>● 应用：光纤骨干网（如运营商长途传输），单根光纤速率可达Tbit&#x2F;s级。<br>（5）码分复用（CDM&#x2F;CDMA）（🟡 难点）<br>● 核心思想：所有用户同时占用相同带宽和时间，通过独特的码片序列区分；<br>● 关键特性：<br>  a. 码片序列正交：不同用户的码片序列内积&#x3D;0（如用户A：00011011，用户B：00101110，内积&#x3D;0）；<br>  b. 码片序列自相关：自身内积&#x3D;码片长度，反码内积&#x3D;-码片长度；<br>● 工作过程：<br>  ○ 发送1：发送自身码片序列；发送0：发送码片反码；<br>  ○ 接收端：将接收信号与目标用户码片序列做内积，结果&gt;0→1，&lt;0→0，&#x3D;0→无数据；<br>● 优点：抗干扰强、保密性好、容量大；<br>● 应用：3G移动通信（CDMA2000、WCDMA）。<br>🟡 难点解析：CDMA内积计算示例<br>● 用户A码片序列（8bit）：00011011→转换为±1表示：-1-1-1+1+1-1+1+1；<br>● 接收信号（多个用户叠加）：-1-1+1+1-1-1+1+1；<br>● 内积计算：[(-1)(-1) + (-1)(-1) + (-1)(+1) + (+1)(+1) + (+1)(-1) + (-1)(-1) + (+1)(+1) + (+1)(+1)] &#x2F; 8 &#x3D; (1+1-1+1-1+1+1+1)&#x2F;8&#x3D;4&#x2F;8&#x3D;0.5&gt;0→接收数据为1。<br>2.4.3 复用技术对比（🔴 重点）<br>复用技术	核心区别	带宽利用率	抗干扰性	典型应用<br>FDM	分带宽	低	中	广播、有线电视<br>TDM	分时间（固定时隙）	中	中	传统电话网、TDMA通信<br>STDM	分时间（动态时隙）	高	中	分组交换网<br>WDM	分波长（光纤）	极高	高	光纤骨干网<br>CDMA	分码片（同频同时）	高	高	3G移动通信<br>五、数字传输系统（2.5）<br>2.5.1 早期数字传输系统的缺点（🔴 重点）<br>● 速率不统一：北美T1（1.544Mbit&#x2F;s）、欧洲E1（2.048Mbit&#x2F;s），互不兼容；<br>● 准同步：各支路时钟有偏差，复用&#x2F;分用复杂。<br>2.5.2 SONET&#x2F;SDH（同步数字系列）（🔴 重点）<br>● 核心目的：统一全球数字传输速率标准，支持同步传输；<br>● 关系：SONET（北美标准）→ SDH（ITU-T国际标准，基于SONET）；<br>● 速率等级（必记核心速率）：<br>SONET等级	SDH等级	速率（Mbit&#x2F;s）	应用场景<br>OC-1&#x2F;STS-1	-	51.84	基础速率<br>OC-3&#x2F;STS-3	STM-1	155.52	光纤接入骨干<br>OC-12&#x2F;STS-12	STM-4	622.08	城域网骨干<br>OC-48&#x2F;STS-48	STM-16	2488.32	广域网骨干<br>OC-192&#x2F;STS-192	STM-64	9953.28	长途干线<br>● 优点：同步传输（时钟统一）、兼容性强、支持多业务（语音、数据、视频）。</p>
+<p>六、宽带接入技术（2.6）<br>2.6.1 宽带定义（🔴 重点）<br>● FCC标准：下行≥25Mbit&#x2F;s，上行≥3Mbit&#x2F;s；<br>● 分类：有线宽带接入（ADSL、HFC、FTTx）、无线宽带接入（5G、Wi-Fi 6）。<br>2.6.2 有线宽带接入技术（🔴 重点 + 🔵 易错点）<br>（1）ADSL（非对称数字用户线）<br>● 核心特点：利用现有电话铜线，非对称速率（下行快、上行慢）；<br>● 频谱分配：0~4kHz供电话使用，4kHz以上供数据传输；<br>● 调制技术：离散多音调（DMT）→ 频分复用，将带宽划分为256个小信道；<br>● 速率：下行最大24Mbit&#x2F;s，上行最大1.4Mbit&#x2F;s（实际受线路质量影响）；<br>● 组成：用户端（ADSL调制解调器+分离器）、端局（DSLAM数字用户线接入复用器）；<br>● 优点：无需重新布线；缺点：速率受距离限制（≤5km）。<br>（2）HFC（光纤同轴混合网）<br>● 核心特点：基于有线电视网（CATV）改造，光纤+同轴电缆；<br>● 结构：头端→光纤干线→光纤结点→同轴电缆→用户；<br>● 调制技术：下行（FDM+QAM），上行（TDMA+QPSK）；<br>● 速率：下行最大1Gbit&#x2F;s，上行最大100Mbit&#x2F;s；<br>● 优点：带宽高；缺点：共享信道（用户多时速率下降）、需改造有线电视网。<br>（3）FTTx（光纤到…）（🔴 重点）<br>● 核心特点：光纤直达用户侧，带宽最大，是未来主流；<br>● 分类：<br>  ○ FTTH（光纤到户）：光纤直达家庭（最优，速率最高）；<br>  ○ FTTB（光纤到楼）：光纤到楼道，再通过双绞线到家庭；<br>  ○ FTTC（光纤到路边）：光纤到路边，再通过同轴电缆到家庭；<br>● 关键技术：无源光网络（PON）→ 光分路器将一路光纤分为多路，降低成本；<br>  ○ EPON（以太网PON）：基于以太网协议，成本低，兼容性好；<br>  ○ GPON（吉比特PON）：支持多业务，QoS更好，速率更高；<br>● 速率：EPON下行1Gbit&#x2F;s，GPON下行2.5Gbit&#x2F;s&#x2F;10Gbit&#x2F;s。<br>🔵 易错点：ADSL vs HFC vs FTTx 对比<br>技术	传输介质	速率	对称性	核心优点	核心缺点<br>ADSL	电话铜线	中（下行24M）	非对称	利用现有线路，成本低	速率受距离限制<br>HFC	光纤+同轴电缆	高（下行1G）	非对称	带宽高，改造成本中等	共享信道，用户多时拥塞<br>FTTx	光纤	极高（1G+）	对称	速率最高，抗干扰强	建设成本高，需重新布线<br>核心知识点总结（🔴 必记）</p>
+<ol>
+<li>物理层四大特性：机械、电气、功能、过程；</li>
+<li>奈氏准则（码元速率上限&#x3D;2W）和香农公式（C&#x3D;Wlog₂(1+S&#x2F;N)）；</li>
+<li>传输媒体对比：双绞线（成本低）、同轴电缆（抗干扰）、光纤（带宽大）；</li>
+<li>复用技术：FDM（分带宽）、TDM（分时间）、WDM（分波长）、CDMA（分码片）；</li>
+<li>数字传输系统：SONET&#x2F;SDH核心速率（STM-1&#x3D;155M，STM-16&#x3D;2.5G）；</li>
+<li>宽带接入：ADSL（铜线）、HFC（光纤+同轴）、FTTx（光纤，最优）。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://blog.iwlookworld.dpdns.org">zhaoxu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://blog.iwlookworld.dpdns.org/2025/12/15/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/">https://blog.iwlookworld.dpdns.org/2025/12/15/【计算机网络】第2章-物理层/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://blog.iwlookworld.dpdns.org" target="_blank">NetStack-网络技术栈</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/12/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0/" title="[计算机网络]第一章 概述"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">[计算机网络]第一章 概述</div></div><div class="info-2"><div class="info-item-1">一、什么是计算机网络二、传输介质 导引型介质	双绞线	光线	同轴电缆 非导引型介质	无线	电波 三、计算机网络的组成 边缘	端主机 核心	网络设备 	 </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/12/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0/" title="[计算机网络]第一章 概述"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-14</div><div class="info-item-2">[计算机网络]第一章 概述</div></div><div class="info-2"><div class="info-item-1">一、什么是计算机网络二、传输介质 导引型介质	双绞线	光线	同轴电缆 非导引型介质	无线	电波 三、计算机网络的组成 边缘	端主机 核心	网络设备 	 </div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">zhaoxu</div><div class="author-info-description">热爱技术的学习者</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lookworld007"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的技术博客！主要分享网络技术、安全技术、操作系统知识、python和AI</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/15/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/" title="【计算机网络】第2章 物理层">【计算机网络】第2章 物理层</a><time datetime="2025-12-15T09:56:52.000Z" title="发表于 2025-12-15 17:56:52">2025-12-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0/" title="[计算机网络]第一章 概述">[计算机网络]第一章 概述</a><time datetime="2025-12-14T07:20:48.000Z" title="发表于 2025-12-14 15:20:48">2025-12-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/14/hello-world/" title="Hello World">Hello World</a><time datetime="2025-12-14T05:52:53.822Z" title="发表于 2025-12-14 13:52:53">2025-12-14</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By zhaoxu</span></div><div class="footer_custom_text">欢迎来到我的博客</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
