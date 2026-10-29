@@ -10,7 +10,7 @@
   <rights>All rights reserved 2026, zhaoxu</rights>
   <subtitle>网络技术栈</subtitle>
   <title>NetStack-网络技术栈</title>
-  <updated>2026-10-29T16:20:45.849Z</updated>
+  <updated>2026-10-29T16:27:09.091Z</updated>
   <entry>
     <author>
       <name>zhaoxu</name>
@@ -24,15 +24,9 @@
     <id>https://blog.iwlookworld.dpdns.org/2026/10/29/vlan-quiz/</id>
     <link href="https://blog.iwlookworld.dpdns.org/2026/10/29/vlan-quiz/"/>
     <published>2026-10-29T02:00:00.000Z</published>
-    <summary>
-      <![CDATA[<div id="vq">
-<style>
-  #vq {
-    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
-                 "Micr]]>
-    </summary>
+    <summary>一份涵盖 VLAN 原理、端口类型、帧格式、间路由、管理协议、安全及配置实践的完整复习题，包含 30 道填空、15 道简答和 5 道实验题。</summary>
     <title>VLAN 协议复习题</title>
-    <updated>2026-10-29T16:20:45.849Z</updated>
+    <updated>2026-10-29T16:27:09.091Z</updated>
   </entry>
   <entry>
     <author>
